@@ -11,7 +11,7 @@ export const fetchData = createAsyncThunk('search/fetchData', async ({ filterTyp
         const response = await fetch(`https://api.spacexdata.com/v3/capsules?${filterType}=${filterValue}`, requestOptions);
         // const response = await fetch(`https://api.spacexdata.com/v3/capsules`, requestOptions);
         const data = await response.json();
-        console.log(data)
+        // console.log(data)
         return data;
     } catch (error) {
         console.error('Error fetching data:', error);

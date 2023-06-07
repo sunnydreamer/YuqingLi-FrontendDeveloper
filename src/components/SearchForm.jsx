@@ -12,18 +12,20 @@ const SearchBar = () => {
   const [filterDate, setFilterDate] = useState(""); // Use separate state for date
   const [filterTime, setFilterTime] = useState("");
 
+  const [alert, setAlert] = useState(false);
+
   const handleSearch = async (e) => {
     e.preventDefault();
 
     if (filterType === "original_launch") {
       const combinedTime = combineDateAndTime(filterDate, filterTime);
-      // console.log(combinedTime);
       if (combinedTime) setFilterValue(combinedTime);
     }
 
-    if (filterValue === "") {
-      console.log("please enter something");
-      return; // Prevent form submission if filter value is empty for type filter
+    setAlert(false);
+    if (filterValue === "" && filterType !== "original_launch") {
+      setAlert(true);
+      return;
     }
 
     console.log(filterType, filterValue);
@@ -63,7 +65,7 @@ const SearchBar = () => {
         <select
           value={filterValue}
           onChange={handleFilterValueChange}
-          className="border-b-2 border-gray-300 w-40 text-left"
+          className="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-64 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
           <option>Select</option>
           <option value="active">Active</option>
@@ -77,7 +79,7 @@ const SearchBar = () => {
         <select
           value={filterValue}
           onChange={handleFilterValueChange}
-          className="border-b-2 border-gray-300 w-40 text-left"
+          className="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-64 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
           <option>Select</option>
           <option value="Dragon 1.0">Dragon 1.0</option>
@@ -92,7 +94,7 @@ const SearchBar = () => {
           value={filterValue}
           placeholder="Type here"
           onChange={handleFilterValueChange}
-          className="border-b-2 border-gray-300 w-40 text-left"
+          className="border-b-2 border-gray-300 w-64 text-left focus:outline-none"
         />
       );
     } else if (filterType === "original_launch") {
@@ -102,13 +104,13 @@ const SearchBar = () => {
             type="date"
             value={filterDate}
             onChange={handleDateChange}
-            className="border-b-2 border-gray-300 w-40 text-left"
+            className="border-b-2 border-gray-300 w-64 text-left focus:outline-none"
           />
           <input
             type="time"
             value={filterTime}
             onChange={handleTimeChange}
-            className="border-b-2 border-gray-300 w-40 text-left"
+            className="border-b-2 border-gray-300 w-64 text-left focus:outline-none"
           />
         </>
       );
@@ -119,6 +121,7 @@ const SearchBar = () => {
 
   useEffect(() => {
     setFilterValue(""); // Reset the filter value when the filter type changes
+    setAlert(false);
   }, [filterType]);
 
   return (
@@ -126,12 +129,12 @@ const SearchBar = () => {
       <h1 className="text-5xl font-bold mb-10">Search</h1>
       <form
         onSubmit={handleSearch}
-        className="ml-4 flex flex-col justify-center items-center w-4/5 gap-10"
+        className="ml-4 flex flex-col justify-center items-center w-4/5 gap-6"
       >
         <select
           value={filterType}
           onChange={handleFilterTypeChange}
-          className="mr-2 border-b-2 border-gray-300 w-40 text-left"
+          className="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-64 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
           <option value="capsule_serial">Capsule Serial</option>
           <option value="status">Status</option>
@@ -145,6 +148,11 @@ const SearchBar = () => {
         >
           Search
         </button>
+        {alert && (
+          <div className="bg-red-500 text-white p-2 mt-2">
+            Please enter complete information.
+          </div>
+        )}
       </form>
     </div>
   );

@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+<br />
+<div align="center">
+  <img src="./src/images/logo.png" alt="Logo" height="80">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <h1 align="center">SpaceX Capsules Database</h1>
 
-## Available Scripts
+</div>
 
-In the project directory, you can run:
+<!-- ABOUT THE PROJECT -->
 
-### `npm start`
+## About The Project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The SpaceX Capsule Search Database is a web application that allows users to search for information about SpaceX capsules. Whether you are interested in the status, type, original launch date, or specific serial number of a SpaceX capsule, this application provides a convenient and user-friendly interface to retrieve the desired information.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Screenshots
 
-### `npm test`
+![Home Page](https://i.imgur.com/pNEeTD7.png)
+![Search Bar](https://i.imgur.com/QnxKtbQ.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Video Demo
 
-### `npm run build`
+[![Watch the video](https://i.imgur.com/npVIzul.png)](https://youtu.be/WlKhsy5yLrY)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Search by various criteria: Users can search for capsules based on their serial number, status, type, or original launch date.
+- Real-time data updates: The database is regularly updated to ensure that the search results reflect the latest information about SpaceX capsules.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Built With
 
-### `npm run eject`
+- React JS
+- Node.js
+- Tailwind CSS
+- Redux
+- Jest
+- SpaceX API
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<!-- GETTING STARTED -->
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Prerequisites
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Node.js
 
-## Learn More
+### Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 1. Clone the repo
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+git clone https://github.com/your_username_/Project-Name.git
+```
 
-### Code Splitting
+### 2. Install NPM packages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+npm install
+```
 
-### Analyzing the Bundle Size
+### 3. Run the React App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+npm start
+```
 
-### Making a Progressive Web App
+### 4. Run test cases
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+npm test
+```
 
-### Advanced Configuration
+<!-- ROADMAP -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Roadmap
 
-### Deployment
+- [ ] More Jest Tests
+- [ ] PHP for authorization REST API
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<!-- CONTRIBUTING -->
 
-### `npm run build` fails to minify
+## Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+When contributing to this repository, please first discuss the change you wish to
+make via issue, email, or any other method with the owners of this repository
+before making a change.
+
+<!-- LICENSE -->
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.

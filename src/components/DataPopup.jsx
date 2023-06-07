@@ -10,7 +10,7 @@ function DataPopup({ popupText, setShowPopup }) {
         return (
           <div key={i}>
             <p>
-              <b>{element[0]}: </b>
+              <strong>{element[0]}: </strong>
               {element[1]}
             </p>
           </div>
@@ -19,11 +19,14 @@ function DataPopup({ popupText, setShowPopup }) {
     : [];
 
   return (
-    <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-gray-800 bg-opacity-10">
-      <div className="bg-white rounded p-10 flex flex-col max-w-md">
+    <div className="data-popup-overlay fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-gray-800 bg-opacity-10">
+      <div
+        className=" data-popup-container bg-white rounded p-10 flex flex-col max-w-md"
+        data-testid="data-popup-container"
+      >
         {popupList}
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+          className="data-popup-close-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
           onClick={handleCloseClick}
         >
           Close

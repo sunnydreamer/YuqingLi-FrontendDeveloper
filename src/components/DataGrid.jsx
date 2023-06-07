@@ -1,22 +1,26 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import "../index.css";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import DataPopup from "./DataPopup";
 
 function DataGrid() {
   const [showPopup, setShowPopup] = useState(false);
   const [popupText, setPopupText] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10; // Number of items to display per page
 
   const searchData = useSelector((state) => state.search.searchData);
-  console.log(searchData);
 
   const handleViewClick = (text) => {
     setPopupText(text);
     setShowPopup(true);
   };
 
+  // Calculate the index range of items to display on the current page
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
   const dataList = searchData
-    ? searchData.map((element) => {
+    ? searchData.slice(indexOfFirstItem, indexOfLastItem).map((element) => {
         return (
           <tr
             className="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600"
@@ -54,6 +58,40 @@ function DataGrid() {
       })
     : [];
 
+  // Calculate the total number of pages
+
+  const totalPages = searchData
+    ? Math.ceil(searchData.length / itemsPerPage)
+    : 1;
+
+  // Change the current page
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  // Generate pagination links
+  const renderPagination = () => {
+    const pageLinks = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageLinks.push(
+        <button
+          key={i}
+          onClick={() => handlePageChange(i)}
+          className={`mx-1 px-3 py-1 rounded ${
+            i === currentPage ? "bg-blue-500 text-white" : "bg-gray-300"
+          }`}
+        >
+          {i}
+        </button>
+      );
+    }
+    return pageLinks;
+  };
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchData]);
+
   return (
     <div className="flex flex-col">
       {searchData && (
@@ -84,6 +122,7 @@ function DataGrid() {
               </table>
             </div>
           </div>
+          <div className="flex justify-center mt-4">{renderPagination()}</div>
           {showPopup && (
             <DataPopup popupText={popupText} setShowPopup={setShowPopup} />
           )}
